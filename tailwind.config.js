@@ -8,11 +8,23 @@ module.exports = {
       colors: {
         light: {
           background: '#ffffff',
-          text: '#1f2937',
+          onBackground: '#b3b3b3',
+          onBackgrounVariant: '#656565',
+          primary: '#49d199',
+          onPrimary: '#242833',
+          secondary: '#aa9bd2',
+          surfacePrimary: '#242833',
+          onSurfacePrimary: '#e6e6e6',
         },
         dark: {
-          background: '#1f2937',
-          text: '#ffffff',
+          background: '#0d0d0d',
+          onBackground: '#0d1220',
+          onBackgrounVariant: '#6e7179',
+          primary: '#35cc8c',
+          onPrimary: '#ffffff',
+          secondary: '#aa9bd2',
+          surfacePrimary: '#0d1220',
+          onSurfacePrimary: '#0d1220',
         },
       },
       fontFamily: {
