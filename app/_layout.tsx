@@ -1,4 +1,7 @@
+import { Poppins_500Medium, useFonts } from '@expo-google-fonts/poppins';
 import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
 
 import { ThemeProvider } from '~/context/ThemeContext';
 import '../global.css';
@@ -8,7 +11,23 @@ export const unstable_settings = {
   initialRouteName: '(onboarding)',
 };
 
+SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
+  const [loaded, error] = useFonts({
+    Poppins_500Medium,
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
   return (
     <ThemeProvider>
       <Stack>
