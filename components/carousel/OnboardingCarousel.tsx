@@ -1,3 +1,4 @@
+import { useRouter, useFocusEffect } from 'expo-router';
 import { View, Text } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 
@@ -25,6 +26,7 @@ const slides = [
 ];
 
 const OnboardingCarousel = () => {
+  const router = useRouter();
   // Cambiamos los parámetros para incluir el slide completo con la imagen
   const renderSlide = ({ item }: any) => {
     const { title, text, image: ImageComponent } = item; // Extraemos la imagen del objeto slide
@@ -33,10 +35,10 @@ const OnboardingCarousel = () => {
       <View className="flex-1 items-center justify-center px-8">
         <View className="mt-10 flex max-w-lg flex-col items-center">
           <ImageComponent className="mb-10 w-full" />
-          <Text className="mt-10 font-poppinsSemiBold text-3xl color-dark-onBackground">
+          <Text className="mt-10 font-poppinsSemiBold text-3xl text-dark-onBackground">
             {title}
           </Text>
-          <Text className="text-center font-poppinsRegular text-lg color-dark-onBackgrounVariant">
+          <Text className="text-center font-poppinsRegular text-lg text-dark-onBackgrounVariant">
             {text}
           </Text>
         </View>
@@ -47,6 +49,7 @@ const OnboardingCarousel = () => {
   const onDone = () => {
     // Aquí puedes manejar la finalización del onboarding
     console.log('Onboarding terminado');
+    router.replace('/signin');
   };
 
   const onSkip = () => {
