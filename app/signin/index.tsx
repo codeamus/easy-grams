@@ -2,10 +2,13 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import Logo from '~/assets/images/logo/logo.svg';
 import DefaultButton from '~/components/common/DefaultButton';
+import { useAppNavigation } from '~/utils/navigation';
 
 const SigIn = () => {
+  const { navigateTo } = useAppNavigation();
+
   const goToLoginScreen = () => {
-    console.log('Go to login screen');
+    navigateTo('/signin/login');
   };
 
   const openModalLogin = () => {
