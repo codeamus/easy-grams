@@ -1,28 +1,93 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
 
+import ArrowIcon from '~/assets/icons/arrow-right.svg';
 import Slide1Svg from '~/assets/images/carousels/slide-1.svg';
+import Slide2Svg from '~/assets/images/carousels/slide-2.svg';
+import Slide3Svg from '~/assets/images/carousels/slide-3.svg';
+
+const slides = [
+  {
+    title: '¡Bienvenido!',
+    text: `¡Felicitaciones por dar el primer paso ${'\n'} hacia una vida más saludable!`,
+    image: Slide1Svg, // Pasamos el componente SVG directamente sin JSX
+  },
+  {
+    title: 'Seguimiento sin esfuerzo',
+    text: 'Registra fácilmente tus comidas, snacks',
+    image: Slide2Svg,
+  },
+  {
+    title: 'Establecimiento de metas',
+    text: 'Fija metas realistas y observa cómo tu progreso se desarrolla',
+    image: Slide3Svg,
+  },
+];
 
 const OnboardingCarousel = () => {
-  return (
-    <View className="flex-1 items-center justify-center px-8">
-      <Slide1Svg className="mb-10 w-full" />
-      <View className="mt-10 flex max-w-lg flex-col items-center">
-        <Text className="font-poppinsSemiBold color-dark-onBackground text-4xl">¡Bienvenido!</Text>
-        <Text className="font-poppinsRegular color-dark-onBackgrounVariant text-center text-lg">
-          ¡Felicitaciones por dar el primer paso {'\n'} hacia una vida más saludable!
-        </Text>
-      </View>
-      <View className="absolute bottom-14 flex w-full flex-row items-end justify-between">
-        <Pressable>
-          <Text className="font-poppinsRegular color-dark-onBackgrounVariant text-lg">Saltar</Text>
-        </Pressable>
-        <Pressable>
-          <Text className="font-poppinsRegular color-dark-onBackgrounVariant text-lg">
-            Siguiente
+  // Cambiamos los parámetros para incluir el slide completo con la imagen
+  const renderSlide = ({ item }: any) => {
+    const { title, text, image: ImageComponent } = item; // Extraemos la imagen del objeto slide
+
+    return (
+      <View className="flex-1 items-center justify-center px-8">
+        <View className="mt-10 flex max-w-lg flex-col items-center">
+          <ImageComponent className="mb-10 w-full" />
+          <Text className="mt-10 font-poppinsSemiBold text-3xl color-dark-onBackground">
+            {title}
           </Text>
-        </Pressable>
+          <Text className="text-center font-poppinsRegular text-lg color-dark-onBackgrounVariant">
+            {text}
+          </Text>
+        </View>
       </View>
-    </View>
+    );
+  };
+
+  const onDone = () => {
+    // Aquí puedes manejar la finalización del onboarding
+    console.log('Onboarding terminado');
+  };
+
+  const onSkip = () => {
+    console.log('Onboarding saltado');
+  };
+
+  const renderNextButton = () => {
+    return (
+      <View className="flex h-10 w-10 items-center justify-center rounded-full bg-dark-primary p-6">
+        <ArrowIcon />
+      </View>
+    );
+  };
+
+  const renderDoneButton = () => {
+    return (
+      <View className="flex h-10 w-10 items-center justify-center rounded-full bg-dark-primary p-6">
+        <ArrowIcon />
+      </View>
+    );
+  };
+
+  const renderSkipButton = () => {
+    return (
+      <View className="h-5 w-10 bg-black">
+        <Text className="text-white">Skip</Text>
+      </View>
+    );
+  };
+
+  return (
+    <AppIntroSlider
+      renderItem={renderSlide}
+      data={slides}
+      onDone={onDone}
+      onSkip={onSkip}
+      renderNextButton={renderNextButton}
+      renderDoneButton={renderDoneButton}
+      renderSkipButton={renderSkipButton}
+      activeDotStyle={{ backgroundColor: '#49d199' }}
+    />
   );
 };
 
