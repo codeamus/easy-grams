@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import Logo from '~/assets/images/logo/logo.svg';
 import DefaultButton from '~/components/common/DefaultButton';
+import ModalSigIn from '~/components/common/ModalSigIn';
 import { useAppNavigation } from '~/utils/navigation';
 
 const SigIn = () => {
   const { navigateTo } = useAppNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const goToLoginScreen = () => {
     navigateTo('/signin/login');
@@ -13,6 +16,7 @@ const SigIn = () => {
 
   const openModalLogin = () => {
     console.log('Open modal login');
+    setModalVisible(true);
   };
 
   return (
@@ -26,13 +30,16 @@ const SigIn = () => {
       </Text>
       <View className="absolute bottom-36 flex w-full flex-col">
         <DefaultButton text="Comenzar" onPress={goToLoginScreen} />
-        <Text className="mt-4 text-center font-poppinsRegular text-dark-onBackground">
-          Already have an account?{' '}
+        <View className="mt-4 flex flex-row items-center justify-center gap-1">
+          <Text className="text-center font-poppinsRegular text-dark-onBackground">
+            ¿Ya tienes una cuenta?{' '}
+          </Text>
           <TouchableOpacity onPress={openModalLogin}>
-            <Text className="text-dark-primary">Sign in</Text>
+            <Text className="text-dark-primary">Iniciar sesión</Text>
           </TouchableOpacity>
-        </Text>
+        </View>
       </View>
+      <ModalSigIn modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
   );
 };
