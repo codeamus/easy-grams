@@ -9,6 +9,14 @@ interface ModalSigInProps {
 }
 
 const ModalSigIn = ({ modalVisible, setModalVisible }: ModalSigInProps) => {
+  const handleSignInWithGoogle = () => {
+    console.log('Sign in with Google');
+  };
+
+  const handleSignInWithEmail = () => {
+    console.log('Sign in with Email');
+  };
+
   return (
     <Modal
       animationType="fade"
@@ -25,15 +33,19 @@ const ModalSigIn = ({ modalVisible, setModalVisible }: ModalSigInProps) => {
             </TouchableOpacity>
             <View className="w-full flex-row items-center justify-center gap-2 rounded-xl border border-dark-outline py-4">
               <IconGmail />
-              <Text className="font-poppinsRegular text-dark-onSurfacePrimary">
-                Iniciar con Google
-              </Text>
+              <TouchableOpacity onPress={handleSignInWithGoogle}>
+                <Text className="font-poppinsRegular text-dark-onSurfacePrimary">
+                  Iniciar con Google
+                </Text>
+              </TouchableOpacity>
             </View>
             <View className="w-full flex-row items-center justify-center gap-2 rounded-xl border border-dark-outline py-4">
               <IconEmail />
-              <Text className="font-poppinsRegular text-dark-onSurfacePrimary">
-                Iniciar con Correo
-              </Text>
+              <TouchableOpacity onPress={handleSignInWithEmail}>
+                <Text className="font-poppinsRegular text-dark-onSurfacePrimary">
+                  Iniciar con Correo
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
