@@ -3,7 +3,12 @@ import { View, Text, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'r
 import IconEmail from './icons/IconEmail';
 import IconGmail from './icons/IconGmail';
 
-const ModalSigIn = ({ modalVisible, setModalVisible }) => {
+interface ModalSigInProps {
+  modalVisible: boolean;
+  setModalVisible: (value: boolean) => void;
+}
+
+const ModalSigIn = ({ modalVisible, setModalVisible }: ModalSigInProps) => {
   return (
     <Modal
       animationType="fade"
