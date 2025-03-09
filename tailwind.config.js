@@ -15,6 +15,8 @@ module.exports = {
           secondary: '#aa9bd2',
           surfacePrimary: '#242833',
           onSurfacePrimary: '#e6e6e6',
+          modalBackground: 'rgba(0, 0, 0, 0.5)',
+          outline: '#D9D9D9',
         },
         dark: {
           background: '#0d0d0d',
@@ -25,6 +27,8 @@ module.exports = {
           secondary: '#aa9bd2',
           surfacePrimary: '#0d1220',
           onSurfacePrimary: '#0d1220',
+          modalBackground: 'rgba(0, 0, 0, 0.5)',
+          outline: '#D9D9D9',
         },
       },
       fontFamily: {
